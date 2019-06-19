@@ -27,14 +27,14 @@ import ecdsa
 def wallet():
     response = None
     while response not in ["1", "2", "3"]:
-        response = input("""What do you want to do?
+        response = input("""Options:
         1. Generate new wallet
         2. Send coins to another wallet
         3. Check transactions\n""")
     if response == "1":
         # Generate new wallet
         print("""=========================================\n
-IMPORTANT: save this credentials or you won't be able to recover your wallet\n
+IMPORTANT: Save this info!\n
 =========================================\n""")
         generate_ECDSA_keys()
     elif response == "2":
@@ -78,7 +78,7 @@ def send_transaction(addr_from, private_key, addr_to, amount):
         res = requests.post(url, json=payload, headers=headers)
         print(res.text)
     else:
-        print("Wrong address or key length! Verify and try again.")
+        print("Wrong address or key length! Check it and try again.")
 
 
 def check_transactions():
